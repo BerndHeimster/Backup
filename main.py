@@ -1,11 +1,11 @@
+import time
+import pyautogui
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 import os
-import pyautogui
-
 
 # set the Path
 s = Service('/usr/bin/chromedriver')
@@ -36,29 +36,28 @@ def selectBackUpFile():
 
     fileSelector = driver.find_element_by_xpath("//input[@type='file']")
 
-    fileSelector.send_keys("/home/juljano/BackUp/backup.txt")
+    pyautogui.hotkey('ctrl', "l")
+    pyautogui.hotkey('shift','7')
+    pyautogui.write('home')
+    pyautogui.hotkey('shift','7')
+    pyautogui.write('juljano')
+    pyautogui.hotkey('shift','7')
+    pyautogui.write('BackUp')
+    pyautogui.hotkey('shift', '7')
+    pyautogui.write('text.txt')
+    time.sleep(1)
+    pyautogui.press('enter')
 
 
 def uploadBackUpFile():
 
-    if(driver.find_element_by_xpath('//span[contains(text(), "1 Datei ausgewählt.")]')):
+    addButton = WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='button']"))).click()
 
-        addButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Hinzufügen")]'))).click()
+    time.sleep(1)
 
-        okButton = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "OK")]'))).click()
+    okButton = WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='button']"))).click()
 
-        os.system("notify-send 'BackUp wurde hochgeladen!'")
-
-        driver.close()
-
-
-    else:
-
-        os.system("notify-send 'Leider konnte das Backup nicht hochgeladen werden!'")
-
-        driver.close()
-
-
+    os.system("notify-send 'BackUp wurde hochgeladen!'")
 
 
 if __name__ == "__main__" :
