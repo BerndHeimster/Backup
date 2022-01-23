@@ -47,10 +47,14 @@ def uploadBackUpFile():
 
         os.system("notify-send 'BackUp wurde hochgeladen!'")
 
+        driver.close()
+
 
     else:
 
-        os.system("notify-send 'Leider konnte die Datei nicht hochgeladen werden!'")
+        os.system("notify-send 'Leider konnte das Backup nicht hochgeladen werden!'")
+
+        driver.close()
 
 
 
