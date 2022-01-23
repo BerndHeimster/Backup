@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 import os
+import pyautogui
+
 
 # set the Path
 s = Service('/usr/bin/chromedriver')
@@ -34,7 +36,7 @@ def selectBackUpFile():
 
     fileSelector = driver.find_element_by_xpath("//input[@type='file']")
 
-    fileSelector.send_keys(os.getcwd() + "/home/juljano/BackUp/backup.txt")
+    fileSelector.send_keys("/home/juljano/BackUp/backup.txt")
 
 
 def uploadBackUpFile():
