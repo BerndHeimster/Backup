@@ -23,7 +23,7 @@ def openNasPage():
 
     # enter password
     password.clear()
-    password.send_keys("rugby5049")
+    password.send_keys("") #password
 
     # target the login button and click it
     loginButton = WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))).click()
