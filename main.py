@@ -44,7 +44,7 @@ def selectBackUpFile():
     pyautogui.hotkey('shift','7')
     pyautogui.write('BackUp')
     pyautogui.hotkey('shift', '7')
-    pyautogui.write('text.txt')
+    pyautogui.write('system-back.tar')
     time.sleep(1)
     pyautogui.press('enter')
 
